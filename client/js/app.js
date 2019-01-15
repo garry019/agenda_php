@@ -1,6 +1,4 @@
 
-
-
 class EventsManager {
     constructor() {
         this.obtenerDataInicial()

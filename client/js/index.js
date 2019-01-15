@@ -1,3 +1,27 @@
+$(document).ready(function() {
+  //conectar();
+});
+
+function conectar(){
+  let url = '../server/conectarPHP.php'
+  $.ajax({
+    url: url,
+    dataType: "json",
+    cache: false,
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: (data) =>{
+      if(data){
+        alert(data.msg);
+      }
+    },
+    error: function(){
+      alert("error en la comunicación con el servidor");
+    }
+  })
+}
+
 $(function(){
   var l = new Login();
 })
