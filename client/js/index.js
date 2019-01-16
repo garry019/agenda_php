@@ -1,5 +1,6 @@
 $(document).ready(function() {
   //conectar();
+  crearUsuarios();
 });
 
 function conectar(){
@@ -13,6 +14,26 @@ function conectar(){
     type: 'POST',
     success: (data) =>{
       if(data){
+        alert(data.msg);
+      }
+    },
+    error: function(){
+      alert("error en la comunicación con el servidor");
+    }
+  })
+}
+
+function crearUsuarios(){
+  let url = '../server/crear_usuarios.php';
+  $.ajax({
+    url: url,
+    dataType: "json",
+    cache: false,
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: (data) =>{
+      if(data.msg == 'OK'){
         alert(data.msg);
       }
     },
