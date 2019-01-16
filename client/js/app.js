@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+});
 
 class EventsManager {
     constructor() {
@@ -36,7 +39,8 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
+          theme: 'jquery-ui',
+        	defaultDate: '2019-01-01',
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
@@ -208,20 +212,20 @@ $(function(){
 
 function initForm(){
   $('#start_date, #titulo, #end_date').val('');
-  $('#start_date, #end_date').datepicker({
-    dateFormat: "yy-mm-dd"
-  });
-  $('.timepicker').timepicker({
-    timeFormat: 'HH:mm',
-    interval: 30,
-    minTime: '5',
-    maxTime: '23:30',
-    defaultTime: '7',
-    startTime: '5:00',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
-  });
+  // $('#start_date, #end_date').datepicker({
+  //   dateFormat: "yy-mm-dd"
+  // });
+  // $('.timepicker').timepicker({
+  //   timeFormat: 'HH:mm',
+  //   interval: 30,
+  //   minTime: '5',
+  //   maxTime: '23:30',
+  //   defaultTime: '7',
+  //   startTime: '5:00',
+  //   dynamic: false,
+  //   dropdown: true,
+  //   scrollbar: true
+  // });
   $('#allDay').on('change', function(){
     if (this.checked) {
       $('.timepicker, #end_date').attr("disabled", "disabled")

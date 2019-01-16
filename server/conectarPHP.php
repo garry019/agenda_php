@@ -104,8 +104,10 @@ class ConectorBD
     }
 
     function consultar($tablas, $campos, $condicion = ""){
+      $_campos = array_keys($campos);
+      $_tablas = array_keys($tablas);
       $sql = "SELECT ";
-      $ultima_key = end(array_keys($campos));
+      $ultima_key = end($_campos);
       foreach ($campos as $key => $value) {
         $sql .= $value;
         if ($key!=$ultima_key) {
@@ -113,7 +115,7 @@ class ConectorBD
         }else $sql .=" FROM ";
       }
 
-      $ultima_key = end(array_keys($tablas));
+      $ultima_key = end($_tablas);
       foreach ($tablas as $key => $value) {
         $sql .= $value;
         if ($key!=$ultima_key) {
@@ -126,7 +128,7 @@ class ConectorBD
       }else {
         $sql .= $condicion.";";
       }
-      //echo $sql;
+      
       return $this->ejecutarQuery($sql);
     }
 

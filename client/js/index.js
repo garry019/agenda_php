@@ -33,12 +33,10 @@ function crearUsuarios(){
     contentType: false,
     type: 'POST',
     success: (data) =>{
-      if(data.msg == 'OK'){
-        alert(data.msg);
-      }
+      console.log(data.msg);
     },
     error: function(){
-      alert("error en la comunicación con el servidor");
+      //console.log('Error en la comunicación con el servidor');
     }
   })
 }
@@ -56,7 +54,7 @@ class Login {
   submitEvent(){
     $('form').submit((event)=>{
       event.preventDefault()
-      this.sendForm()
+      this.sendForm();
     })
   }
 
