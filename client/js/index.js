@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  sessionStorage.clear();
   //conectar();
   crearUsuarios();
 });
@@ -24,7 +25,7 @@ function conectar(){
 }
 
 function crearUsuarios(){
-  let url = '../server/crear_usuarios.php';
+  let url = '../server/create_user.php';
   $.ajax({
     url: url,
     dataType: "json",
@@ -72,6 +73,7 @@ class Login {
       type: 'POST',
       success: function(php_response){
         if (php_response.msg == "OK") {
+          sessionStorage.setItem("user", php_response.session);
           window.location.href = 'main.html';
         }else {
           alert(php_response.msg);

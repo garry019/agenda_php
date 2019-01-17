@@ -6,16 +6,20 @@ class EventsManager {
 
 
     obtenerDataInicial() {
-        let url = '../server/getEvents.php'
+        let url = '../server/getEvents.php';
+        var form_data = new FormData();
+        form_data.append('usuario', sessionStorage.getItem("user"));
         $.ajax({
           url: url,
           dataType: "json",
           cache: false,
           processData: false,
           contentType: false,
-          type: 'GET',
+          type: 'POST',
+          data: form_data,
           success: (data) =>{
             if (data.msg=="OK") {
+              //alert(data.cantidad);
               this.poblarCalendario(data.eventos)
             }else {
               alert(data.msg)
@@ -50,7 +54,7 @@ class EventsManager {
           events: eventos,
           eventDragStart: (event,jsEvent) => {
             $('.delete-btn').find('img').attr('src', "img/trash-open.png");
-            $('.delete-btn').css('background-color', '#a70f19')
+            $('.delete-btn').css('background-color', '#a70f19');
           },
           eventDragStop: (event,jsEvent) =>{
             var trashEl = $('.delete-btn');
@@ -64,7 +68,6 @@ class EventsManager {
                   this.eliminarEvento(event, jsEvent)
                   $('.calendario').fullCalendar('removeEvents', event.id);
             }
-
           }
         })
     }
@@ -74,6 +77,7 @@ class EventsManager {
       form_data.append('titulo', $('#titulo').val())
       form_data.append('start_date', $('#start_date').val())
       form_data.append('allDay', document.getElementById('allDay').checked)
+      form_data.append('usuario', sessionStorage.getItem("user"))
       if (!document.getElementById('allDay').checked) {
         form_data.append('end_date', $('#end_date').val())
         form_data.append('end_hour', $('#end_hour').val())
@@ -193,12 +197,14 @@ class EventsManager {
 
 
 $(function(){
+  $('#Cookie').html(sessionStorage.getItem("user"));
   initForm();
   var e = new EventsManager();
   $('form').submit(function(event){
     event.preventDefault()
     e.anadirEvento()
   })
+
 });
 
 

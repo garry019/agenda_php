@@ -11,6 +11,7 @@ if( $con->initConexion('agenda_nextu') == 'OK'){
     while($fila =  $resultado->fetch_assoc()){
       $regs[] = $fila;
       $p = $fila['password'];
+      $c = $fila['id'];
     }
   }
   if(count($regs) == 0){
@@ -19,6 +20,7 @@ if( $con->initConexion('agenda_nextu') == 'OK'){
     if(count($regs) == 1){
       $val = password_verify($password, $p);
       if($val == true){
+        $response['session'] = $c;
         $response['msg'] = 'OK';
       }else{
         $response['msg'] = 'El usuario existe pero la falla la contraseña';

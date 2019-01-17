@@ -83,6 +83,7 @@ class ConectorBD
         }else $sql .= ');';
         $i++;
       }
+      //echo $sql;
       return $this->ejecutarQuery($sql);
     }
 
@@ -128,7 +129,7 @@ class ConectorBD
       }else {
         $sql .= $condicion.";";
       }
-      
+      //echo $sql;
       return $this->ejecutarQuery($sql);
     }
 
