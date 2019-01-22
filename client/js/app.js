@@ -124,9 +124,9 @@ class EventsManager {
     }
 
     eliminarEvento(event, jsEvent){
-
       var form_data = new FormData()
       form_data.append('id', event.id)
+      form_data.append('usuario', sessionStorage.getItem("user"))
       $.ajax({
         url: '../server/delete_event.php',
         dataType: "json",
@@ -197,7 +197,7 @@ class EventsManager {
 
 
 $(function(){
-  $('#Cookie').html(sessionStorage.getItem("user"));
+  $('#Cookie').html('ID del usuario: '+sessionStorage.getItem("user"));
   initForm();
   var e = new EventsManager();
   $('form').submit(function(event){

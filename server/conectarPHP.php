@@ -133,6 +133,12 @@ class ConectorBD
       return $this->ejecutarQuery($sql);
     }
 
+    function eliminarRegistro($tabla, $condicion){
+      $sql = "DELETE FROM ".$tabla." WHERE ".$condicion.";";
+      //echo $sql;
+      return $this->ejecutarQuery($sql);
+    }
+
     function test(){
       return 'ok';
     }
