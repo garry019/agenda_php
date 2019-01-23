@@ -48,6 +48,7 @@ class EventsManager {
           droppable: true,
           dragRevertDuration: 0,
           timeFormat: 'H:mm',
+          allDay: false,
           eventDrop: (event) => {
               this.actualizarEvento(event)
           },

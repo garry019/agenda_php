@@ -11,12 +11,13 @@ $con = new ConectorBD();
 // $datos['allday'] = 1;
 // $datos['usuario'] = 2;
 
+$fi = $_POST['start_date'].' '.$_POST['start_hour'];
+$ff = $_POST['end_date'].' '.$_POST['end_hour'];
+
 //DATOS DELFORMULARIO
 $datos['titulo'] = '"'.$_POST['titulo'].'"';
-$datos['fecha_inicio'] = '"'.$_POST['start_date'].'"';
-$datos['hora_inicio'] = '"'.$_POST['start_hour'].'"';
-$datos['fecha_finalizacion'] = '"'.$_POST['end_date'].'"';
-$datos['hora_finalizacion'] = '"'.$_POST['end_hour'].'"';
+$datos['fecha_inicio'] = '"'.$fi.'"';
+$datos['fecha_finalizacion'] = '"'.$ff.'"';
 $datos['allday'] = $_POST['allDay'];
 $datos['usuario'] = $_POST['usuario'];
 

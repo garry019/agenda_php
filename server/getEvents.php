@@ -13,7 +13,8 @@ if( $con->initConexion('agenda_nextu') == 'OK'){
         'title' => $fila['titulo'],
         'start' => $fila['fecha_inicio'],
         'end' =>  $fila['fecha_finalizacion'],
-        'allDay' => $fila['allday']
+        'allDay' => $fila['allday'],
+        'description' => 'ookokokokokok'
       );
     }
   }
